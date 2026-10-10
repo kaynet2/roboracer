@@ -22,12 +22,12 @@ def generate_launch_description():
             executable='cartographer_occupancy_grid_node',
             name='cartographer_occupancy_grid_node',
             output='screen',
-            arguments=['-resolution', '0.05', '-publish_period_sec', '2.0']
+            arguments=['-resolution', '0.05', '-publish_period_sec', '1.0']
         ),
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             name='base_link_to_laser_broadcaster',
-            arguments=['0', '0', '0', '0', '0', '0', 'roboracer_1', 'autodrive/roboracer_1/lidar']
+            arguments=['0.1', '0', '0.1', '0', '0', '0', 'roboracer_1', 'lidar']
         )
     ])

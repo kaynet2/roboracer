@@ -37,25 +37,29 @@ TRAJECTORY_BUILDER_2D.use_imu_data = false
 
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.linear_search_window = 0.15
-TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.angular_search_window = math.rad(20.)
-TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.translation_delta_cost_weight = 10.0
-TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.rotation_delta_cost_weight = 1e-1
+TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.angular_search_window = math.rad(25.)
+TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.translation_delta_cost_weight = 0.1
+TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.rotation_delta_cost_weight = 0.1
 
-TRAJECTORY_BUILDER_2D.submaps.num_range_data = 60
+TRAJECTORY_BUILDER_2D.submaps.num_range_data = 30
 TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.05
 
 TRAJECTORY_BUILDER_2D.motion_filter.max_time_seconds = 0.5
 TRAJECTORY_BUILDER_2D.motion_filter.max_distance_meters = 0.1
 TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = math.rad(1.0)
 
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 20.0
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 80.0
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.occupied_space_weight = 10.
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 10.
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 40.
 
-POSE_GRAPH.optimize_every_n_nodes = 30
+POSE_GRAPH.optimize_every_n_nodes = 10
 POSE_GRAPH.constraint_builder.min_score = 0.65
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.7
+POSE_GRAPH.constraint_builder.max_constraint_distance = 15.0
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.6
 POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher.linear_search_window = 10.0
 POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher.angular_search_window = math.rad(45.)
 POSE_GRAPH.optimization_problem.huber_scale = 1e1
+POSE_GRAPH.constraint_builder.loop_closure_translation_weight = 1.1e5
+POSE_GRAPH.constraint_builder.loop_closure_rotation_weight = 1e5
 
 return options

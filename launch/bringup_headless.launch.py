@@ -36,5 +36,9 @@ def generate_launch_description():
             name='autodrive_bridge',
             emulate_tty=True,
             output='screen',
+            remappings=[
+                ('/tf', '/tf_sim_ground_truth'),
+                ('/tf_static', '/tf_static_sim_ground_truth')
+            ]
         ),
     ])
